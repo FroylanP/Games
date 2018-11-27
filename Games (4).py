@@ -76,40 +76,55 @@ def DHM():
             enemy_x = random.randint(0, 4)
         sleep(250) 
         
-rock = Image("00000:"
+Rock = Image("00000:"
              "09990:"
              "09990:"
              "09990:"
              "00000")
              
-paper = Image("99999:"
+Paper = Image("99999:"
               "90009:"
               "90009:"
               "90009:"
               "99999")
               
-scissors = Image("90009:"
+Scissors = Image("90009:"
                  "09090:"
                  "00900:"
                  "99099:"
                  "99099")
                  
-lizzard = Image("90000:"
+Lizzard = Image("90000:"
                 "90000:"
                 "90000:"
                 "90000:"
                 "99999")
 
-spock = Image("99999:"
+Spock = Image("99999:"
               "90000:"
               "99999:"
               "00009:"
               "99999")
 
-RPSLS = [rock, paper, scissors, lizzard, spock]
-def RPS():
-    display.show(random.choice(RPSLS))
-
+#RPSLS = [rock, paper, scissors, lizzard, spock]
+class RPS:
+    def __init__(self):
+        self.rock = Rock
+        self.paper = Paper
+        self.scissors = Scissors
+        self.lizzard = Lizzard
+        self.spock = Spock
+        self.choices = [self.rock, self.paper, self.scissors, self.lizzard, self.spock]
+        self.choice = None
+        
+    def choose(self):
+        self.choice = random.choice(self.choices)
+        
+    def play_RPS(self):
+        if accelerometer.is_gesture("shake"):
+            self.choose()
+            display.show(self.choice)
+Rocks = RPS()
 while True:
     if button_b.is_pressed():
         DHM()
@@ -118,5 +133,6 @@ while True:
         flipcoin.play_coinflip()
         break
     if accelerometer.is_gesture("shake"): #button_b.is_pressed() and button_a.is_pressed():
-        RPS()
+        Rocks.play_RPS()
+        break
         
