@@ -107,6 +107,8 @@ spock = Image("99999:"
               "99999")
 
 RPSLS = [rock, paper, scissors, lizzard, spock]
+def RPS():
+    display.show(random.choice(RPSLS))
 
 while True:
     if button_b.is_pressed():
@@ -115,6 +117,6 @@ while True:
     if button_a.is_pressed():       
         flipcoin.play_coinflip()
         break
-    if button_b.is_pressed() and button_a.is_pressed():
-        display.show(random.choice(RPSLS))
-        break
+    if accelerometer.is_gesture("shake"): #button_b.is_pressed() and button_a.is_pressed():
+        RPS()
+        
