@@ -75,9 +75,46 @@ def DHM():
             enemy_y = 0
             enemy_x = random.randint(0, 4)
         sleep(250) 
-#DHM()
+        
+rock = Image("00000:"
+             "09990:"
+             "09990:"
+             "09990:"
+             "00000")
+             
+paper = Image("99999:"
+              "90009:"
+              "90009:"
+              "90009:"
+              "99999")
+              
+scissors = Image("90009:"
+                 "09090:"
+                 "00900:"
+                 "99099:"
+                 "99099")
+                 
+lizzard = Image("90000:"
+                "90000:"
+                "90000:"
+                "90000:"
+                "99999")
+
+spock = Image("99999:"
+              "90000:"
+              "99999:"
+              "00009:"
+              "99999")
+
+RPSLS = [rock, paper, scissors, lizzard, spock]
+
 while True:
     if button_b.is_pressed():
         DHM()
-    if accelerometer.was_gesture("shake"):        
+        break
+    if button_a.is_pressed():       
         flipcoin.play_coinflip()
+        break
+    if button_b.is_pressed() and button_a.is_pressed():
+        display.show(random.choice(RPSLS))
+        break
