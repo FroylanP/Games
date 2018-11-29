@@ -46,9 +46,10 @@ class Coinflip_Game:
         self.choice = random.choice(self.choices)
 
     def play_coinflip(self):
-        if button_a.is_pressed():
-            self.flip()
-            display.show(self.choice)
+        for i in range(10000000):    
+            if button_a.is_pressed():
+                self.flip()
+                display.show(self.choice)
 
 flipcoin = Coinflip_Game()
 
@@ -57,6 +58,7 @@ enemy_x = random.randint(0, 4)
 enemy_y = 0
 
 def DHM():
+    sleep(1000)
     while True:
         global player_x
         global enemy_x
@@ -75,6 +77,7 @@ def DHM():
             enemy_y = 0
             enemy_x = random.randint(0, 4)
         sleep(250) 
+    display.scroll("GAME OVER")
         
 Rock = Image("00000:"
              "09990:"
@@ -107,6 +110,7 @@ Spock = Image("99999:"
               "99999")
 
 #RPSLS = [rock, paper, scissors, lizzard, spock]
+
 class RPS:
     def __init__(self):
         self.rock = Rock
@@ -121,13 +125,16 @@ class RPS:
         self.choice = random.choice(self.choices)
         
     def play_RPS(self):
-        if accelerometer.is_gesture("shake"):
-            self.choose()
-            display.show(self.choice)
+        for i in range(10000000):    
+            if accelerometer.is_gesture("shake"):
+                self.choose()
+                display.show(self.choice)
 Rocks = RPS()
+
 while True:
     if button_b.is_pressed():
-        DHM()
+        if button_b.was_pressed():
+            DHM()
         break
     if button_a.is_pressed():       
         flipcoin.play_coinflip()
