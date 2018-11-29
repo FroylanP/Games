@@ -139,7 +139,7 @@ while True:
     if button_a.is_pressed():       
         flipcoin.play_coinflip()
         break
-    if accelerometer.is_gesture("shake"): #button_b.is_pressed() and button_a.is_pressed():
+    if accelerometer.is_gesture("shake"):
         Rocks.play_RPS()
         break
         
